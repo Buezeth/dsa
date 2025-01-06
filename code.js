@@ -30,6 +30,10 @@ class LinkedList {
     }
 
     pop () {
+        if(!this.head) {
+            return undefined
+        }
+
         let prev  = this.head
         let temp = this.head
 
@@ -46,6 +50,10 @@ class LinkedList {
 
     unshift(value) {
         const newNode = new Node(value)
+
+        if(!this.head) {
+            return undefined
+        }
 
         if(!this.head) {
             this.head = newNode
@@ -70,12 +78,30 @@ class LinkedList {
 
         return temp
     }
+
+    getFirst() {
+        return this.head
+    }
+
+    getLast () {
+        if(!this.head) {
+            return null
+        }
+        let temp = this.head
+        while(temp.next) {
+            temp = temp.next
+        }
+        return temp
+    }
 }
 
 const myLinkedList = new LinkedList(1)
 myLinkedList.push(10)
 myLinkedList.push(3)
+myLinkedList.push(43)
 // myLinkedList.pop()
 myLinkedList.unshift(6)
+myLinkedList.unshift(34)
 myLinkedList.shift()
+myLinkedList.getLast()
 console.log(myLinkedList)
